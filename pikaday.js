@@ -924,7 +924,6 @@
                 return d;
             }
 
-            return null;
             return isDate(this._d) ? new Date(this._d.getTime()) : new Date();
         },
 
@@ -1120,11 +1119,11 @@
          */
         setMinDate: function(date, preventDraw)
         {
-            if(value instanceof Date) {
-                setToStartOfDay(value);
-                this._o.minDate = value;
-                this._o.minYear  = value.getFullYear();
-                this._o.minMonth = value.getMonth();
+            if(date instanceof Date) {
+                setToStartOfDay(date);
+                this._o.minDate = date;
+                this._o.minYear  = date.getFullYear();
+                this._o.minMonth = date.getMonth();
                 this._minTime = new Date();
                 this._minTime.setHours(date.getHours(), date.getMinutes(), date.getSeconds());
             } else {
@@ -1142,11 +1141,11 @@
          */
         setMaxDate: function(date, preventDraw)
         {
-            if(value instanceof Date) {
-                setToStartOfDay(value);
-                this._o.maxDate = value;
-                this._o.maxYear = value.getFullYear();
-                this._o.maxMonth = value.getMonth();
+            if(date instanceof Date) {
+                setToStartOfDay(date);
+                this._o.maxDate = date;
+                this._o.maxYear = date.getFullYear();
+                this._o.maxMonth = date.getMonth();
                 this._maxTime = new Date();
                 this._maxTime.setHours(date.getHours(), date.getMinutes(), date.getSeconds());
             } else {
