@@ -1,34 +1,25 @@
 /* Timepicker */
-.pika-timepicker {
-    text-align: center;
-    padding-bottom:8px;
-}
 
 .pika-single {
-  .pika-split-time {
-      padding-right: 58px;
-  }
 
   .pika-timepicker {
-    position: absolute;
-    top:0;
-    right: 0;
-    bottom:0;
-    width:58px;
-    z-index: 99999;
+    display: inline-block;
+    text-align: center;
     border-left: 1px solid #ccc;
-    padding: 0;
     select {
-      width:58px; height: 100% !important;
-      border:0 solid;
+      margin: auto;
+      border: 0 solid;
+    }
+    option {
+      padding: 3px 10px;
+      font-size: 12px;
+      height: 16px;
+      color: #545454;
+      &:nth-child(odd) {
+        background-color: rgba(0, 126, 255, 0.1);
+      }
     }
   }
-
-  select {
-    font-size:0.9em;
-    text-align: center;
-  }
 }
-
 
 

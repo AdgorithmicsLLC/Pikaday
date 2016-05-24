@@ -470,7 +470,7 @@
         if (opts.splitTimeView) {
             addClass(self.el, 'pika-split-time');
 
-            results = '<select class="pika-select pika-select-time" size="14">';
+            results = '<select class="pika-select pika-select-time" size="9">';
             for (var h = 0; h < 24; h++) {
                 for (var m = 0; m < 60; m += minutesStep) {
                     date = new Date();
