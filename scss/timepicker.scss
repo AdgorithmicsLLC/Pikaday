@@ -1,0 +1,34 @@
+/* Timepicker */
+.pika-timepicker {
+    text-align: center;
+    padding-bottom:8px;
+}
+
+.pika-single {
+  .pika-split-time {
+      padding-right: 58px;
+  }
+
+  .pika-timepicker {
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom:0;
+    width:58px;
+    z-index: 99999;
+    border-left: 1px solid #ccc;
+    padding: 0;
+    select {
+      width:58px; height: 100% !important;
+      border:0 solid;
+    }
+  }
+
+  select {
+    font-size:0.9em;
+    text-align: center;
+  }
+}
+
+
+
