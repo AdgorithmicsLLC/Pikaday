@@ -3,14 +3,24 @@
 .pika-single {
 
   .pika-timepicker {
+    // to tweak the position for Safari
+    $min-height: 175px;
+
+    box-sizing: border-box;
     display: inline-block;
+    vertical-align: middle;
+    min-height: $min-height;
     text-align: center;
     border-left: 1px solid #ccc;
     select {
+      outline: none;
+      box-sizing: border-box;
+      min-height: $min-height;
       margin: auto;
       border: 0 solid;
     }
     option {
+      // padding for option isn't effective on Safari
       padding: 3px 10px;
       font-size: 12px;
       height: 16px;
