@@ -474,10 +474,7 @@
                 for (var m = 0; m < 60; m += minutesStep) {
                     date.setHours(h, m, 0, 0);
 
-                    disabled = false;
-
-                    if (date.getTime() < self._minTime.getTime()) disabled = true;
-                    if (date.getTime() > self._maxTime.getTime()) disabled = true;
+                    disabled = ((date.getTime() < self._minTime.getTime()) || (date.getTime() > self._maxTime.getTime()))
                     
                     results += renderOption(zeroFill(h) + ' : ' + zeroFill(m), self._hours === h && m == round(self._minutes, minutesStep), disabled);
                 }
