@@ -449,9 +449,7 @@
             minutesStep = opts.minutesStep,
             secondsStep = opts.secondsStep,
             selDate     = new Date((isDate(self._d) ? self._d : isDate(opts.defaultDate) ? opts.defaultDate : new Date()).setHours(0,0,0,0)),
-            isMinDate   = isDate(opts.minDate) && compareDates(opts.minDate, selDate),
-            isMaxDate   = isDate(opts.maxDate) && compareDates(opts.maxDate, selDate),
-            date, disabled, isJustOnTime;
+            date, disabled;
 
         function round(num, step) {
             var round;
@@ -470,18 +468,14 @@
         if (opts.splitTimeView) {
             addClass(self.el, 'pika-split-time');
 
-            date = new Date();
+            date = new Date(selDate);
             results = '<select class="pika-select pika-select-time" size="9">';
             for (var h = 0; h < 24; h++) {
                 for (var m = 0; m < 60; m += minutesStep) {
                     date.setHours(h, m, 0, 0);
 
-                    isJustOnTime = date.valueOf() === self._minTime.valueOf();
-                    if (isJustOnTime) {
-                        disabled = false;
-                    } else {
-                        disabled = (isMinDate && date <= self._minTime) || (isMaxDate && date >= self._maxTime);
-                    }
+                    disabled = ((date.getTime() < self._minTime.getTime()) || (date.getTime() > self._maxTime.getTime()))
+                    
                     results += renderOption(zeroFill(h) + ' : ' + zeroFill(m), self._hours === h && m == round(self._minutes, minutesStep), disabled);
                 }
             }
@@ -1127,12 +1121,11 @@
         setMinDate: function(date, preventDraw)
         {
             if(date instanceof Date) {
+                this._minTime = new Date(date);
                 setToStartOfDay(date);
                 this._o.minDate = date;
                 this._o.minYear  = date.getFullYear();
                 this._o.minMonth = date.getMonth();
-                this._minTime = new Date();
-                this._minTime.setHours(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
             } else {
                 this._o.minDate = defaults.minDate;
                 this._o.minYear  = defaults.minYear;
@@ -1149,12 +1142,11 @@
         setMaxDate: function(date, preventDraw)
         {
             if(date instanceof Date) {
+                this._maxTime = new Date(date);
                 setToStartOfDay(date);
                 this._o.maxDate = date;
                 this._o.maxYear = date.getFullYear();
                 this._o.maxMonth = date.getMonth();
-                this._maxTime = new Date();
-                this._maxTime.setHours(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
             } else {
                 this._o.maxDate = defaults.maxDate;
                 this._o.maxYear = defaults.maxYear;
